@@ -16,3 +16,18 @@ void selection_sort(std::vector<int> &vector) {
         }
     }
 }
+
+// Based on SequentialSearch2 algorithm presented in section 3.2 of
+// Introduction to the Design and Analysis of Algorithms (3rd Edition) - Anany Levitin
+int sequential_search(std::vector<int> vector, int key){
+    int n=vector.size();
+    vector.push_back(key);
+    int i=0;
+    while(vector[i] != key){
+        ++i;
+    }
+    if(i<n)
+        return i;
+    else
+        return -1;
+}

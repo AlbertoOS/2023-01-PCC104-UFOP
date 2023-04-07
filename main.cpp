@@ -32,5 +32,11 @@ int main() {
     std::cout << std::endl << "Sorting random vector with Selection Sort algorithm: " << std::endl;
     selection_sort(vector);
     print_array(vector);
+
+    std::cout << std::endl << "Searching for element in vector: " << vector[5] << std::endl;
+    print_array(vector);
+    std::cout << "Sequential search result, element index: " << sequential_search(vector, vector[5]) << std::endl;
+    std::cout << std::endl << "Searching for element not in vector: " << 0 << std::endl;
+    std::cout << "Sequential search result, should be -1 as it is not found: " << sequential_search(vector, 0) << std::endl;
     return 0;
 }
