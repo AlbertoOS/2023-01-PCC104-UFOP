@@ -30,6 +30,22 @@ int generate_random_integer(int random_min, int random_max) {
     return dist(mersenne_engine);
 }
 
+Graph generate_random_graph(int num_nodes, int num_edges) {
+    Graph graph;
+    std::uniform_int_distribution<int> dist{1, num_nodes};
+    for (int i = 0; i < num_edges; ++i) {
+        graph.add_edge(dist(mersenne_engine), dist(mersenne_engine));
+    }
+    return graph;
+}
+
+void print_graph(Graph graph) {
+    for (auto const &[node, adjacency_list]: graph.get_adjacency_list()) {
+        std::cout << "Node: " << node << ", adjacency_list: ";
+        print_container(adjacency_list);
+    }
+}
+
 int main() {
     std::vector<int> vector = generate_random_vector(10, 1, 100);
     std::cout << "Generated random vector: " << std::endl;
@@ -41,10 +57,14 @@ int main() {
     int random_element = vector[generate_random_integer(0, vector.size() - 1)];
     std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
     print_container(vector);
-    std::cout << "Sequential search result, element index: " << sequential_search(vector, random_element) << std::endl;
-    std::cout << std::endl << "Searching for element not in vector: " << 0 << std::endl;
-    std::cout << "Sequential search result, should be -1 as it is not found: " << sequential_search(vector, 0)
+    std::cout << "Sequential search result, element index: " << sequential_search(vector, random_element) << std::endl
+              << std::endl << "Searching for element not in vector: " << 0 << std::endl
+              << "Sequential search result, should be -1 as it is not found: " << sequential_search(vector, 0)
               << std::endl << std::endl;
+
+    Graph graph = generate_random_graph(5, 10);
+    std::cout << "Generated random graph: " << std::endl;
+    print_graph(graph);
 
     return 0;
 }

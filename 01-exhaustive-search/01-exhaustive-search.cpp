@@ -31,3 +31,20 @@ int sequential_search(std::vector<int> vector, int key) {
     else
         return -1;
 }
+
+std::map<int, std::set<int>> Graph::get_adjacency_list() {
+    return adjacency_list;
+}
+
+void Graph::add_node(int node) {
+    if (adjacency_list.find(node) == adjacency_list.end()) {
+        adjacency_list[node] = {};
+    }
+}
+
+void Graph::add_edge(int node1, int node2) {
+    add_node(node1);
+    add_node(node2);
+    adjacency_list[node1].insert(node2);
+    adjacency_list[node2].insert(node1);
+}
