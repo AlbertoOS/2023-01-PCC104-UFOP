@@ -15,6 +15,17 @@ auto print_container = [](const auto &container) {
     std::cout << "]" << std::endl;
 };
 
+auto print_ordered_container = [](auto container) {
+    std::cout << "[ ";
+    while (!container.empty()) {
+        auto element = get_first_element(container);
+        std::cout << element << " ";
+        container.pop();
+    }
+    std::cout << "]" << std::endl;
+};
+
+
 std::vector<int> generate_random_vector(int vector_size, int random_min, int random_max) {
     std::vector<int> vector(vector_size);
     std::uniform_int_distribution<int> dist{random_min, random_max};
@@ -54,7 +65,7 @@ int main() {
     selection_sort(vector);
     print_container(vector);
 
-    int random_element = vector[generate_random_integer(0, vector.size() - 1)];
+    int random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
     std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
     print_container(vector);
     std::cout << "Sequential search result, element index: " << sequential_search(vector, random_element) << std::endl
@@ -62,9 +73,18 @@ int main() {
               << "Sequential search result, should be -1 as it is not found: " << sequential_search(vector, 0)
               << std::endl << std::endl;
 
-    Graph graph = generate_random_graph(5, 10);
+    int num_nodes = 8;
+    Graph graph = generate_random_graph(num_nodes, 2 * num_nodes);
     std::cout << "Generated random graph: " << std::endl;
     print_graph(graph);
 
+    std::cout << std::endl;
+    int src_node = generate_random_integer(1, num_nodes);
+    int dst_node = generate_random_integer(1, num_nodes);
+    std::cout << "Trying to find a valid path between Node " << src_node << " and Node " << dst_node << std::endl;
+    std::cout << "Path found using Depth First Search: ";
+    print_container(graph.valid_path(src_node, dst_node, "DFS"));
+    std::cout << "Path found using Breadth First Search: ";
+    print_container(graph.valid_path(src_node, dst_node, "BFS"));
     return 0;
 }
