@@ -73,7 +73,7 @@ int main() {
               << "Sequential search result, should be -1 as it is not found: " << sequential_search(vector, 0)
               << std::endl << std::endl;
 
-    int num_nodes = 8;
+    int num_nodes = 13;
     Graph graph = generate_random_graph(num_nodes, 2 * num_nodes);
     std::cout << "Generated random graph: " << std::endl;
     print_graph(graph);

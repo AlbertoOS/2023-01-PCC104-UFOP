@@ -68,6 +68,7 @@ std::list<int> Graph::valid_path(int src_node, int dst_node, auto frontier) {
         current_node = get_first_element(frontier);
         frontier.pop();
         if (current_node == dst_node) {
+            // Reference for path reconstruction - access date 09/04/2023 : https://www.baeldung.com/cs/dfs-vs-bfs-vs-dijkstra
             path.push_front(current_node); // O(1)
             int parent_node = path_parent[current_node];
             while (parent_node != -1) {
