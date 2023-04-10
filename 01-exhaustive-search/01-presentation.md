@@ -53,9 +53,7 @@ Partindo desta expressão, é possível realizar o cálculo da função de custo
 $$
 \begin{aligned}
 T(n) & = \sum\limits_{i=0}^{n-2}\sum\limits_{j=i+1}^{n-1}1 = \sum\limits_{i=0}^{n-2}[(n-1)-(i+1)+1] = \sum\limits_{i=0}^{n-2}(n-1-i) \\
-
 & = \sum\limits_{i=0}^{n-2}(n-1) - \sum\limits_{i=0}^{n-2}i = (n-1) \sum\limits_{i=0}^{n-2}1 - {(n-2) (n-1) \over 2} \\
-
 & = (n-1)^2 - {(n-2) (n-1)\over 2} = {(n-1) n \over 2} = {n^2-n \over 2} \approx {1 \over 2}n^2 \in \theta(n^2)
 \end{aligned}
 $$
