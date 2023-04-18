@@ -3,6 +3,7 @@
 #include <random>
 #include <algorithm>
 #include "01-exhaustive-search/01-exhaustive-search.h"
+#include "02-divide-and-conquer/02-divide-and-conquer.h"
 
 static std::random_device random_device;
 static std::mt19937 mersenne_engine{random_device()};
@@ -86,5 +87,16 @@ int main() {
     print_container(graph.valid_path(src_node, dst_node, "DFS"));
     std::cout << "Path found using Breadth First Search: ";
     print_container(graph.valid_path(src_node, dst_node, "BFS"));
+
+    std::cout << std::endl << std::endl;
+    random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
+    std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
+    std::cout << "Using sorted random vector for binary search: " << std::endl;
+    print_container(vector);
+    std::cout << "Binary search result, element index: " << binary_search(vector, random_element) << std::endl
+              << std::endl << "Searching for element not in vector: " << 0 << std::endl
+              << "Binary search result, should be -1 as it is not found: " << binary_search(vector, 0)
+              << std::endl << std::endl;
+
     return 0;
 }
