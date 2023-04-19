@@ -91,7 +91,7 @@ void list01_exhaustive_search() {
 
 void list02_divide_and_conquer() {
     std::vector<int> vector = generate_random_vector(10, 1, 100);
-    selection_sort(vector); //Using method from previous exercise list
+    std::sort(vector.begin(), vector.end()); // O(n*log n) - Introsort (quicksort + heapsort + insertion sort)
 
     int random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
     std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
