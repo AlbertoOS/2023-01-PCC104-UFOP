@@ -58,7 +58,7 @@ void print_graph(Graph graph) {
     }
 }
 
-int main() {
+void list01_exhaustive_search() {
     std::vector<int> vector = generate_random_vector(10, 1, 100);
     std::cout << "Generated random vector: " << std::endl;
     print_container(vector);
@@ -87,9 +87,13 @@ int main() {
     print_container(graph.valid_path(src_node, dst_node, "DFS"));
     std::cout << "Path found using Breadth First Search: ";
     print_container(graph.valid_path(src_node, dst_node, "BFS"));
+}
 
-    std::cout << std::endl << std::endl;
-    random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
+void list02_divide_and_conquer() {
+    std::vector<int> vector = generate_random_vector(10, 1, 100);
+    selection_sort(vector); //Using method from previous exercise list
+
+    int random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
     std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
     std::cout << "Using sorted random vector for binary search: " << std::endl;
     print_container(vector);
@@ -97,6 +101,10 @@ int main() {
               << std::endl << "Searching for element not in vector: " << 0 << std::endl
               << "Binary search result, should be -1 as it is not found: " << binary_search(vector, 0)
               << std::endl << std::endl;
+}
 
+int main() {
+    //list01_exhaustive_search();
+    list02_divide_and_conquer();
     return 0;
 }
