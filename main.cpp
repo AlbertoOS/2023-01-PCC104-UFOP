@@ -9,20 +9,22 @@
 static std::random_device random_device;
 static std::mt19937 mersenne_engine{random_device()};
 
-auto print_container = [](const auto &container) {
+auto print_container = [](const auto &container, bool print_index = true) {
     std::cout << "[ ";
     for (int element: container) {
         std::cout << element << " ";
     }
     std::cout << "]" << std::endl;
 
-    std::cout << "i ";
-    int i = 0;
-    for (int element: container) {
-        std::cout << std::setfill(' ') << std::setw(log10(element) + 1) << i << " ";
-        ++i;
+    if (print_index) {
+        std::cout << "i ";
+        int i = 0;
+        for (int element: container) {
+            std::cout << std::setfill(' ') << std::setw(log10(element) + 1) << i << " ";
+            ++i;
+        }
+        std::cout << std::endl;
     }
-    std::cout << std::endl;
 };
 
 auto print_ordered_container = [](auto container) {
@@ -63,7 +65,7 @@ Graph generate_random_graph(int num_nodes, int num_edges) {
 void print_graph(Graph graph) {
     for (auto const &[node, adjacency_list]: graph.get_adjacency_list()) {
         std::cout << "Node: " << node << ", adjacency_list: ";
-        print_container(adjacency_list);
+        print_container(adjacency_list, false);
     }
 }
 
@@ -74,6 +76,7 @@ void list01_exhaustive_search() {
     std::cout << std::endl << "Sorting random vector with Selection Sort algorithm: " << std::endl;
     selection_sort(vector);
     print_container(vector);
+    std::cout << std::endl << "---------------------" << std::endl;
 
     int random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
     std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
@@ -81,11 +84,11 @@ void list01_exhaustive_search() {
     std::cout << "Sequential search result, element index: " << sequential_search(vector, random_element) << std::endl
               << std::endl << "Searching for element not in vector: " << 0 << std::endl
               << "Sequential search result, should be -1 as it is not found: " << sequential_search(vector, 0)
-              << std::endl << std::endl;
+              << std::endl << "---------------------" << std::endl;
 
     int num_nodes = 13;
     Graph graph = generate_random_graph(num_nodes, 2 * num_nodes);
-    std::cout << "Generated random graph: " << std::endl;
+    std::cout << std::endl << "Generated random graph: " << std::endl;
     print_graph(graph);
 
     std::cout << std::endl;
@@ -93,23 +96,34 @@ void list01_exhaustive_search() {
     int dst_node = generate_random_integer(1, num_nodes);
     std::cout << "Trying to find a valid path between Node " << src_node << " and Node " << dst_node << std::endl;
     std::cout << "Path found using Depth First Search: ";
-    print_container(graph.valid_path(src_node, dst_node, "DFS"));
+    print_container(graph.valid_path(src_node, dst_node, "DFS"), false);
     std::cout << "Path found using Breadth First Search: ";
-    print_container(graph.valid_path(src_node, dst_node, "BFS"));
+    print_container(graph.valid_path(src_node, dst_node, "BFS"), false);
+    std::cout << std::endl << "---------------------" << std::endl;
 }
 
 void list02_divide_and_conquer() {
-    std::vector<int> vector = generate_random_vector(10, 1, 100);
+    std::vector<int> vector = generate_random_vector(23, 1, 100);
     std::sort(vector.begin(), vector.end()); // O(n*log n) - Introsort (quicksort + heapsort + insertion sort)
 
     int random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
     std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
-    std::cout << "Using sorted random vector for binary search: " << std::endl;
+    std::cout << "Using ascending sorted random vector for binary search: " << std::endl;
     print_container(vector);
     std::cout << "Binary search result, element index: " << binary_search(vector, random_element) << std::endl
               << std::endl << "Searching for element not in vector: " << 0 << std::endl
               << "Binary search result, should be -1 as it is not found: " << binary_search(vector, 0)
-              << std::endl << std::endl;
+              << std::endl << "---------------------" << std::endl;
+
+    random_element = vector[generate_random_integer(0, (int) vector.size() - 1)];
+    std::cout << std::endl << "Searching for random element in vector: " << random_element << std::endl;
+    std::cout << "Using ascending sorted random vector for interpolation search: " << std::endl;
+    print_container(vector);
+    std::cout << "Interpolation search result, element index: " << interpolation_search(vector, random_element)
+              << std::endl
+              << std::endl << "Searching for element not in vector: " << 0 << std::endl
+              << "Interpolation search result, should be -1 as it is not found: " << interpolation_search(vector, 0)
+              << std::endl << "---------------------" << std::endl;
 }
 
 int main() {

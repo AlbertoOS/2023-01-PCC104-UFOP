@@ -5,4 +5,6 @@
 
 int binary_search(std::vector<int> vector, int key);
 
+int interpolation_search(std::vector<int> vector, int key);
+
 #endif //DIVIDE_AND_CONQUER_H
