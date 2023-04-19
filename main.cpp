@@ -2,6 +2,7 @@
 #include <vector>
 #include <random>
 #include <algorithm>
+#include <iomanip>
 #include "01-exhaustive-search/01-exhaustive-search.h"
 #include "02-divide-and-conquer/02-divide-and-conquer.h"
 
@@ -14,6 +15,14 @@ auto print_container = [](const auto &container) {
         std::cout << element << " ";
     }
     std::cout << "]" << std::endl;
+
+    std::cout << "i ";
+    int i = 0;
+    for (int element: container) {
+        std::cout << std::setfill(' ') << std::setw(log10(element) + 1) << i << " ";
+        ++i;
+    }
+    std::cout << std::endl;
 };
 
 auto print_ordered_container = [](auto container) {
