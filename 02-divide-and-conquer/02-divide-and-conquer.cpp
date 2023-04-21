@@ -18,8 +18,14 @@ int binary_search(std::vector<int> vector, int key) {
 
 //Interpolation Search has the restriction that it can only be used in an ascending sorted array
 // variable-size-decrease algorithm - partition-based
-// "Unlike binary search, which always compares a search key with the middle value of a given sorted array (and hence reduces the problem’s instance size by half), interpolation search takes into account the value of the search key in order to find the array’s element to be compared with the search key. In a sense, the algorithm mimics the way we search for a name in a telephone book: if we are searching for someone named Brown, we open the book not in the middle but very close to the beginning, unlike our action when searching for someone named, say, Smith" - Introduction to The Design and Analysis of Algorithms, Anany Levitin, p. 161
+// "Unlike binary search, which always compares a search key with the middle value of a given sorted array (and hence reduces the problem's instance size by half), interpolation search takes into account the value of the search key in order to find the array's element to be compared with the search key. In a sense, the algorithm mimics the way we search for a name in a telephone book: if we are searching for someone named Brown, we open the book not in the middle but very close to the beginning, unlike our action when searching for someone named, say, Smith" - Introduction to The Design and Analysis of Algorithms, Anany Levitin, p. 161
 int interpolation_search(std::vector<int> vector, int key) {
+    /*
+     * Best-case: O(1) - example [1,2,3,4,5,6,7,8,9,10], search for any key, position will be defined by 0 + ((key - 1) * (9 - 0) / (10 - 1)), which results in (key-1) and it defines the index based on key for this example; index=key-1
+     * Average-case: O(log(log n))
+     * Worst-case: O(n) - example [1,2,3,4,5,6,7,8,9,10000], search for 9, it will always suppose it is closer to left-most side and will run for n-2 elements (all elements except first and last)
+     * works best when the values are uniformly distributed
+     */
     int left = 0, right = vector.size() - 1;
     // Since vector is sorted, an element present in array must be in range defined by corner elements
     while (left <= right && key >= vector[left] && key <= vector[right]) {
@@ -30,8 +36,8 @@ int interpolation_search(std::vector<int> vector, int key) {
             }
             return -1;
         }
-        // "More precisely, on the iteration dealing with the array’s portion between the leftmost element A[l] and the rightmost element A[r], the algorithm assumes that the array values increase linearly, i.e., along the straight line through the points (l, A[l]) and (r, A[r])."
-        // "(The accuracy of this assumption can influence the algorithm’s efficiency but not its correctness.)" - Introduction to The Design and Analysis of Algorithms, Anany Levitin, p. 162
+        // "More precisely, on the iteration dealing with the array's portion between the leftmost element A[l] and the rightmost element A[r], the algorithm assumes that the array values increase linearly, i.e., along the straight line through the points (l, A[l]) and (r, A[r])."
+        // "(The accuracy of this assumption can influence the algorithm's efficiency but not its correctness.)" - Introduction to The Design and Analysis of Algorithms, Anany Levitin, p. 162
         int position = left + ((key - vector[left]) * (right - left) / (vector[right] - vector[left]));
         if (vector[position] == key) {
             return position;
@@ -49,4 +55,54 @@ int interpolation_search(std::vector<int> vector, int key) {
          */
     }
     return -1;
+}
+
+void BinarySearchTree::insert(const int &element) {
+    if (!root) {
+        root = std::make_shared<Node>(element);
+        return;
+    }
+
+    std::shared_ptr<Node> current_node = root;
+    std::shared_ptr<Node> next_node = current_node;
+    while (next_node != nullptr) {
+        current_node = next_node;
+        if (element < current_node->value) {
+            next_node = current_node->left;
+        } else {
+            next_node = current_node->right;
+        }
+    } // while loop breaks when it has found a leaf node that should receive a new child node
+    if (element < current_node->value) {
+        current_node->left = std::make_shared<Node>(element);
+    } else if (element > current_node->value) {
+        current_node->right = std::make_shared<Node>(element);
+    }
+    return;
+}
+
+std::shared_ptr<BinarySearchTree::Node> BinarySearchTree::search(int key) {
+    std::shared_ptr<BinarySearchTree::Node> current_node = root;
+    while (current_node != nullptr) {
+        if (key == current_node->value) {
+            return current_node;
+        } else if (key < current_node->value) {
+            current_node = current_node->left;
+        } else if (key > current_node->value) {
+            current_node = current_node->right;
+        }
+    }
+    return nullptr;
+}
+
+BinarySearchTree::BinarySearchTree() {
+    root = nullptr;
+    left = nullptr;
+    right = nullptr;
+}
+
+BinarySearchTree::BinarySearchTree(int value) : value(value) {
+    root = std::make_shared<Node>(value);
+    left = nullptr;
+    right = nullptr;
 }

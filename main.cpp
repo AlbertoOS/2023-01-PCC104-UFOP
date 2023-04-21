@@ -69,6 +69,27 @@ void print_graph(Graph graph) {
     }
 }
 
+// Reference - code adapted from https://www.geeksforgeeks.org/print-binary-tree-2-dimensions/
+void print_binary_search_tree(std::shared_ptr<BinarySearchTree::Node> node, int space) {
+    if (node == NULL)
+        return;
+    int step = 5;
+    space += step;
+
+    print_binary_search_tree(node->right, space);
+    std::cout << std::endl;
+    for (int i = step; i < space; i++)
+        std::cout << " ";
+    std::cout << node->value << "\n";
+    print_binary_search_tree(node->left, space);
+}
+
+void print_binary_search_tree(std::shared_ptr<BinarySearchTree::Node> node) {
+    std::cout << "~~~Begin Binary Search Tree~~~";
+    print_binary_search_tree(node, 0);
+    std::cout << "---End Binary Search Tree---" << std::endl;
+}
+
 void list01_exhaustive_search() {
     std::vector<int> vector = generate_random_vector(10, 1, 100);
     std::cout << "Generated random vector: " << std::endl;
@@ -124,6 +145,13 @@ void list02_divide_and_conquer() {
               << std::endl << "Searching for element not in vector: " << 0 << std::endl
               << "Interpolation search result, should be -1 as it is not found: " << interpolation_search(vector, 0)
               << std::endl << "---------------------" << std::endl;
+
+    BinarySearchTree tree;
+    int num_nodes = generate_random_integer(10, 10);
+    for (int i = 0; i < num_nodes; ++i) {
+        tree.insert(generate_random_integer(1, 100));
+        print_binary_search_tree(tree.root);
+    }
 }
 
 int main() {
