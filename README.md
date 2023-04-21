@@ -1,4 +1,5 @@
 # 2023-01-PCC104-UFOP
+
 Algorithm Implementations for PCC104 class at UFOP
 
 ## Objetivo
@@ -9,10 +10,8 @@ O foco é além das implementações de algoritmos clássicos, apresentar meu pr
 
 Portanto - e com certeza - os algoritmos não serão desenvolvidos de maneira mais genérica possível e nem de maneira ótima em alguns casos.
 
-Linguagem das implementações:
-<picture>
-  <img alt="C++" src="https://img.shields.io/badge/C%2B%2B-00599C?style=plastic&logo=c%2B%2B&logoColor=white"  />
-</picture>
+Linguagem das implementações: C++
+
 ## Apresentações
 
 1. [Apresentação algoritmos de Força Bruta e Busca Exaustiva](01-exhaustive-search/01-exhaustive-search.md)
