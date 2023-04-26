@@ -40,6 +40,19 @@ int interpolation_search(std::vector<int> vector, int key) {
     }
     return -1;
 }
+ 
+/* Interpolation Search
+ *
+ * Best-case: O(1) - example [1,2,3,4,5,6,7,8,9,10], search for any key, position will be defined by 0 + ((key - 1) * (9 - 0) / (10 - 1)), which results in (key-1) and it defines the index based on key for this example; index=key-1
+ * Average-case: O(log(log n))
+ * Worst-case: O(n) - example [1,2,3,4,5,6,7,8,9,10000], search for 9, it will always suppose it is closer to left-most side and will run for n-1 elements (all elements except the last one)
+ * note: works best when the values are uniformly distributed
+ *
+ * Example with values, if I'm searching in an array of 10 elements for the number 50 and in first interaction left points to a number 0 and right to a number 100:
+ * 0 + ((50 - 0) * (9 - 0) / (100 - 0)) = 0 + (50*9)/100 = 450/100 ~= 4
+ * Since the chosen number is halfway between 0 and 100, its position is expected to be halfway across the vector
+ * after this, if the search value is not in the expected position, it compares the search value to position value and limits search to left-most or right-most portion/partition of vector.
+ */
 
 void BinarySearchTree::insert(const int &element) {
     if (!root) {
