@@ -15,4 +15,4 @@ Linguagem das implementações: C++
 ## Apresentações
 
 1. [Apresentação algoritmos de Força Bruta e Busca Exaustiva](01-exhaustive-search/01-exhaustive-search.md)
-2. [Apresentação algoritmos de Diminuir e Conquistar](02-divide-and-conquer/02-divide-and-conquer.md)
+2. [Apresentação algoritmos de Diminuir e Conquistar](02-decrease-and-conquer/02-decrease-and-conquer.md)

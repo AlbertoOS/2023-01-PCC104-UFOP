@@ -6,7 +6,7 @@
 #include <iomanip>
 #include <algorithm>
 #include "01-exhaustive-search/01-exhaustive-search.h"
-#include "02-divide-and-conquer/02-divide-and-conquer.h"
+#include "02-decrease-and-conquer/02-decrease-and-conquer.h"
 
 const auto print_container = [](const auto &container, bool print_index = true) {
     std::cout << "[ ";

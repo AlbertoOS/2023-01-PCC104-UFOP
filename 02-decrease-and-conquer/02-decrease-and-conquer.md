@@ -47,9 +47,10 @@ int binary_search(std::vector<int> vector, int key) {
 ### Binary Search - Análise
 
 > **Note**
+>
 > _Binary Search_ é um algoritmo de busca que tem como restrição o requisito de ter um array ordenado crescentemente como entrada
 
-Para o algoritmo _Binary Search_, a operação básica é definida pela comparação entre elementos a fim de encontrar um elemento buscado dentro de um array de input. Essa comparação é feita pela linha de código `if (key == vector[middle])` contida em um loop `while (left <= right)` em que ou `left` aumenta ou `right` diminui a cada interação de modo que o problema é reduzido na metade, caracterizando esse algoritmo como Divisão e Conquista e dentro dessa categoria ele é caracterizado como algoritmo de divisão por um fator constante.
+Para o algoritmo _Binary Search_, a operação básica é definida pela comparação entre elementos a fim de encontrar um elemento buscado dentro de um array de input. Essa comparação é feita pela linha de código `if (key == vector[middle])` contida em um loop `while (left <= right)` em que ou `left` aumenta ou `right` diminui a cada interação de modo que o problema é reduzido na metade, caracterizando esse algoritmo como Diminuição e Conquista e dentro dessa categoria ele é caracterizado como algoritmo de diminuição por um fator constante.
 
 #### Binary Search - Expressão Matemática
 
@@ -140,9 +141,10 @@ int interpolation_search(std::vector<int> vector, int key) {
 ### Interpolation Search - Análise
 
 > **Note**
+>
 > _Interpolation Search_ é um algoritmo de busca que tem como restrição o requisito de ter um array ordenado crescentemente como entrada
 
-Para o algoritmo _Interpolation Search_, a operação básica é definida pela comparação entre elementos a fim de encontrar um elemento buscado dentro de um array de input. Essa comparação é feita pela linha de código `if (vector[position] == key)` bem como `else if (vector[position] < key)` contida em um loop `while (left <= right && key >= vector[left] && key <= vector[right])` em que ou `left` aumenta ou `right` diminui a cada interação de modo que o problema é reduzido por um fator variável a depender da posição calculada em que se espera que o elemento buscado esteja. Essa posição tem o cálculo a partir dos valores do primeiro (menor) e do último (maior) elementos e levando em consideração também o valor do elemento buscado, supondo um crescimento uniforme e linear entre os elementos do array; de modo que a eficiência do algoritmo é afetada pela precisão dessa suposição, porém não sua corretude. _Interpolation Search_ é caracterizado como um algoritmo de Divisão e Conquista e dentro dessa categoria ele é caracterizado como algoritmo de divisão por um fator variável.
+Para o algoritmo _Interpolation Search_, a operação básica é definida pela comparação entre elementos a fim de encontrar um elemento buscado dentro de um array de input. Essa comparação é feita pela linha de código `if (vector[position] == key)` bem como `else if (vector[position] < key)` contida em um loop `while (left <= right && key >= vector[left] && key <= vector[right])` em que ou `left` aumenta ou `right` diminui a cada interação de modo que o problema é reduzido por um fator variável a depender da posição calculada em que se espera que o elemento buscado esteja. Essa posição tem o cálculo a partir dos valores do primeiro (menor) e do último (maior) elementos e levando em consideração também o valor do elemento buscado, supondo um crescimento uniforme e linear entre os elementos do array; de modo que a eficiência do algoritmo é afetada pela precisão dessa suposição, porém não sua corretude. _Interpolation Search_ é caracterizado como um algoritmo de Diminuição e Conquista e dentro dessa categoria ele é caracterizado como algoritmo de diminuição por um fator variável.
 
 > "Unlike binary search, which always compares a search key with the middle value of a given sorted array (and hence
 > reduces the problem's instance size by half), interpolation search takes into account the value of the search key in

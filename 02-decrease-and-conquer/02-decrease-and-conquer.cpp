@@ -1,4 +1,4 @@
-#include "02-divide-and-conquer.h"
+#include "02-decrease-and-conquer.h"
 
 //Binary Search has the restriction that it can only be used in an ascending sorted array
 // decrease-by-a-constant-factor algorithm
@@ -40,7 +40,7 @@ int interpolation_search(std::vector<int> vector, int key) {
     }
     return -1;
 }
- 
+
 /* Interpolation Search
  *
  * Best-case: O(1) - example [1,2,3,4,5,6,7,8,9,10], search for any key, position will be defined by 0 + ((key - 1) * (9 - 0) / (10 - 1)), which results in (key-1) and it defines the index based on key for this example; index=key-1
