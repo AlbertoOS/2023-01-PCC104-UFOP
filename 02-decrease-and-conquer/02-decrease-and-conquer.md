@@ -55,17 +55,20 @@ Para o algoritmo _Binary Search_, a operação básica é definida pela compara�
 #### Binary Search - Expressão Matemática
 
 A análise de complexidade de tempo deste algoritmo é dada pela seguinte expressão matemática:
+
 $$
 \begin{aligned}
 C(n) & = C(\lfloor {n \over 2} \rfloor) + 1 \; \forall n > 1 \\
 C(1) & = 1 \\
 \end{aligned}
 $$
+
 Tal que $C(1)$ representa o caso base e $C(n)$ representa o custo para se realizar a busca em uma entrada de tamanho $n$, de modo que a cada iteração, a entrada é divida por $2$ e é feita uma operação básica de comparação.
 
 #### Binary Search - Cálculo da função de custo
 
 Considerando $n = 2^k$ a fim de facilitar o cálculo e dado que essa substituição ainda mantém a expressão verdadeira.
+
 $$
 \begin{aligned}
 C(2^k) & = C(2^{k-1}) + 1 \\
@@ -77,12 +80,15 @@ C(2^k) & = C(2^{k-1}) + 1 \\
 C(2^k) & = k + 1 \\
 \end{aligned}
 $$
+
 Com a relação de recorrência resolvida, é feita a substituição de $k = \log_2 n$ e tem-se que:
+
 $$
 \begin{aligned}
 C(n) & = \log_2 n + 1 \\
 \end{aligned}
 $$
+
 > P.s.: Essa relação de recorrência tem uma prova similar em _Example 3, Section 2.4 - Introduction to the Design and Analysis of Algorithms (3rd Edition) - Anany Levitin_
 
 #### Binary Search - Indicação da classe de eficiência
@@ -210,6 +216,7 @@ $O(\log(\log n))$
 #### Interpolation Search - Expressão Matemática
 
 A análise de complexidade de tempo deste algoritmo para o pior caso é dada pela seguinte expressão matemática:
+
 $$
 \begin{aligned}
 C_w(n) & = C_w(n - 1) + 1 \; \forall n > 1 \\
@@ -313,6 +320,7 @@ No melhor caso, a inserção é em uma árvore vazia ou inexistente, acarretando
 No pior caso, a árvore é degenerada, formando um caminho linear e pode se manifestar de 3 formas: cada node na árvore possui valor menor que o node anterior, sendo degenerada para à esquerda; cada node na árvore possui valor maior que o node anterior, sendo degenerada para à direita; ou cada node alterna aleatoriamente em ter um valor menor e/ou maior que o node anterior formando "zig-zags".
 
 A análise de complexidade de tempo deste algoritmo para o pior caso é dada pela seguinte expressão matemática:
+
 $$
 \begin{aligned}
 C_w(n) & = C_w(n - 1) + 1 \; \forall n > 1 \\
@@ -323,12 +331,14 @@ $$
 Para o caso médio, a Árvore de Busca Binária tem seus métodos de inserção e busca com complexidade similar ao algoritmo de Busca Binária.
 
 A análise de complexidade de tempo deste algoritmo para o caso médio é dada pela seguinte expressão matemática:
+
 $$
 \begin{aligned}
 C(n) & = C(\lfloor {n \over 2} \rfloor) + 1,\; \forall n > 1 \\
 C(1) & = 1 \\
 \end{aligned}
 $$
+
 Tal que $C(1)$ representa o caso base e $C(n)$ representa o custo para se realizar a busca em uma entrada de tamanho $n$, de modo que a cada iteração, a entrada é divida por $2$ e é feita uma operação básica de comparação.
 
 
@@ -363,7 +373,9 @@ C(2^k) & = C(2^{k-1}) + 1.5 \\
 C(2^k) & = k + 1.5 \\
 \end{aligned}
 $$
+
 Com a relação de recorrência resolvida, é feita a substituição de $k = \log_2 n$ e tem-se que:
+
 $$
 \begin{aligned}
 C(n) & = \log_2 n + 1.5 \\
