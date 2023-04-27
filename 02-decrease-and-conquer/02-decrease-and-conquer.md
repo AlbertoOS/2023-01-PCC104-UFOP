@@ -185,7 +185,7 @@ $$x = l + \left\lfloor \frac{(v - A[l])(r-l)}{A[r] - A[l]} \right\rfloor$$
 
 #### Interpolation Search - Melhor Caso
 
-Para o melhor caso, temos um custo constante ($O(1)$) para acessar qualquer elemento buscado desde que os elementos estejam dispostos em um crescimento uniforme.
+Para o melhor caso, temos um custo constante ( $O(1)$ ) para acessar qualquer elemento buscado desde que os elementos estejam dispostos em um crescimento uniforme.
 
 Exemplo:
 
