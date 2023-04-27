@@ -2,6 +2,7 @@
 
 Table of Contents:
 
+- [Observação inicial](#observação-inicial)
 - [Binary Search](#binary-search)
   - [Binary Search - Implementação](#binary-search---implementação)
   - [Binary Search - Análise](#binary-search---análise)
@@ -23,6 +24,14 @@ Table of Contents:
     - [Binary Search Tree - Expressão Matemática](#binary-search-tree---expressão-matemática)
     - [Binary Search Tree - Cálculo da função de custo](#binary-search-tree---cálculo-da-função-de-custo)
     - [Binary Search Tree - Indicação da classe de eficiência](#binary-search-tree---indicação-da-classe-de-eficiência)
+
+## Observação inicial
+
+Como os algoritmos de busca apresentados aqui (_Binary Search_ e _Interpolation Search_) possuem a necessidade de que o array de entrada esteja ordenado, foi utilizado a função [_std::sort_ da biblioteca algorithm](https://cplusplus.com/reference/algorithm/sort/) para ordenar o array.
+
+Esse função em média possui complexidade linearítimico (linear \* logarítimico) com relação ao tamanho da entrada, performando aproximadamente $n*log_2 n$ (onde $n$ é o tamanho da entrada) comparações de elementos e no máximo esse mesmo número de troca de elementos.
+
+Interessante ressaltar que essa função é uma implementação do algoritmo [_Introsort_](https://en.wikipedia.org/wiki/Introsort), esse algoritmo se caracteriza pela combição de três outros algoritmos: _Quicksort_, _Heapsort_ e _Insertion Sort_. Seu modo de operação permite que até mesmo o pior caso mantenha complexidade linearítimica. Em resumo, a ordenação começa aplicando _Quicksort_ no array de entrada, se a profundidade de recursão exceder o tamanho de $2*\log_2 n$ a ordenação continua a ser feita por _Heapsort_ e altera para _Insertion Sort_ quando o número de elementos é menor que $16$, de modo que sua complexidade média quadrática não terá grande impacto negativo devido ao baixo número de elementos - ao contrário porém, provê um bom desempenho em um número pequeno de elementos onde chamadas recursivas ou estruturas de armazenamento auxiliares seriam mais custosas.
 
 ## Binary Search
 
