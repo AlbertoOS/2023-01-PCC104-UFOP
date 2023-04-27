@@ -1,4 +1,4 @@
-# Implementação dos algoritmos de Força Bruta e Busca Exaustiva
+# Implementação dos algoritmos de Diminuir e Conquistar
 
 Table of Contents:
 
