@@ -1,5 +1,5 @@
-#ifndef DIVIDE_AND_CONQUER_H
-#define DIVIDE_AND_CONQUER_H
+#ifndef DECREASE_AND_CONQUER_H
+#define DECREASE_AND_CONQUER_H
 
 #include <vector>
 #include <memory>
@@ -33,4 +33,4 @@ public:
     explicit BinarySearchTree(int value);
 };
 
-#endif //DIVIDE_AND_CONQUER_H
+#endif //DECREASE_AND_CONQUER_H
