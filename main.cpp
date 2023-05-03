@@ -35,7 +35,7 @@ void list01_exhaustive_search() {
     std::cout << std::endl << "---------------------" << std::endl;
 }
 
-void list02_divide_and_conquer() {
+void list02_decrease_and_conquer() {
     std::vector<int> vector = generate_random_vector(23, 1, 100);
     std::sort(vector.begin(), vector.end()); // O(n*log n) - Introsort (quicksort + heapsort + insertion sort)
 
@@ -90,8 +90,19 @@ void list02_divide_and_conquer() {
 
 }
 
+void list03_divide_and_conquer() {
+    std::vector<int> vector = generate_random_vector(23, 1, 100);
+
+    std::cout << std::endl << "Using random vector to find max element: " << std::endl;
+    print_container(vector);
+    std::cout << "Max element result, element index: " << max_element(vector, 0, vector.size() - 1)
+              << ", element value: " << vector[max_element(vector, 0, vector.size() - 1)] << std::endl
+              << std::endl << "---------------------" << std::endl;
+}
+
 int main() {
     //list01_exhaustive_search();
-    list02_divide_and_conquer();
+    //list02_decrease_and_conquer();
+    list03_divide_and_conquer();
     return 0;
 }
