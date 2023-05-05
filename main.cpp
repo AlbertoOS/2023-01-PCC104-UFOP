@@ -98,6 +98,13 @@ void list03_divide_and_conquer() {
     std::cout << "Max element result, element index: " << max_element(vector, 0, vector.size() - 1)
               << ", element value: " << vector[max_element(vector, 0, vector.size() - 1)] << std::endl
               << std::endl << "---------------------" << std::endl;
+
+    std::cout << "Generated random vector: " << std::endl;
+    print_container(vector);
+    std::cout << std::endl << "Sorting random vector with Merge Sort algorithm: " << std::endl;
+    merge_sort(vector);
+    print_container(vector);
+    std::cout << std::endl << "---------------------" << std::endl;
 }
 
 int main() {
