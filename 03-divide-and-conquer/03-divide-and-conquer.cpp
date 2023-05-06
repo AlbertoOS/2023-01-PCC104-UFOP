@@ -68,3 +68,10 @@ void merge_sort(std::vector<int> &vector) {
         }
     }
 }
+
+int binary_search_tree_size(std::shared_ptr<BinarySearchTree::Node> node) {
+    if (node == NULL)
+        return 0;
+    else
+        return 1 + binary_search_tree_size(node->left) + binary_search_tree_size(node->right);
+}
