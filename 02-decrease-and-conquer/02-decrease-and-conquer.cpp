@@ -96,12 +96,10 @@ std::shared_ptr<BinarySearchTree::Node> BinarySearchTree::search(int key) {
 
 BinarySearchTree::BinarySearchTree() {
     root = nullptr;
-    left = nullptr;
-    right = nullptr;
 }
 
-BinarySearchTree::BinarySearchTree(int value) : value(value) {
+BinarySearchTree::BinarySearchTree(int value) {
     root = std::make_shared<Node>(value);
-    left = nullptr;
-    right = nullptr;
+    root->left = nullptr;
+    root->right = nullptr;
 }

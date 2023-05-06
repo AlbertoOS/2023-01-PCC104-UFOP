@@ -21,8 +21,6 @@ public:
     };
 
     std::shared_ptr<Node> root;
-    int value;
-    std::shared_ptr<BinarySearchTree> left, right;
 
     void insert(const int &element);
 
