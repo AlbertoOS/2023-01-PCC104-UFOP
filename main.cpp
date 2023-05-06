@@ -105,6 +105,44 @@ void list03_divide_and_conquer() {
     merge_sort(vector);
     print_container(vector);
     std::cout << std::endl << "---------------------" << std::endl;
+
+    vector = generate_random_vector(23, 1, 100);
+    std::cout << "Generated random vector: " << std::endl;
+    print_container(vector);
+    std::cout << std::endl << "Sorting random vector with Quick Sort algorithm: " << std::endl;
+    quick_sort(vector);
+    print_container(vector);
+    std::cout << std::endl << "---------------------" << std::endl;
+
+
+    BinarySearchTree tree;
+    int random_element = generate_random_integer(1, 100);
+    tree.insert(random_element);
+    print_binary_search_tree(tree.root);
+    for (int i = 0; i < 10; ++i) {
+        tree.insert(generate_random_integer(1, 100));
+        print_binary_search_tree(tree.root);
+    }
+    std::cout << std::endl << "Binary Search Tree size: " << binary_search_tree_size(tree.root) << std::endl;
+    std::cout << std::endl << "---------------------" << std::endl;
+    std::cout << std::endl << "Binary Search Tree preorder traversal: " << std::endl;
+    bst_preorder_recursive(tree.root); // root-left-right order
+    std::cout << std::endl;
+    bst_preorder_iterative(tree.root);
+    std::cout << std::endl;
+    std::cout << std::endl << "---------------------" << std::endl;
+    std::cout << std::endl << "Binary Search Tree postorder traversal: " << std::endl;
+    bst_postorder_recursive(tree.root); //  left-right-root order
+    std::cout << std::endl;
+    bst_postorder_iterative(tree.root);
+    std::cout << std::endl;
+    std::cout << std::endl << "---------------------" << std::endl;
+    std::cout << std::endl << "Binary Search Tree inorder traversal: " << std::endl;
+    bst_inorder_recursive(tree.root); // left-root-right order - ascending values
+    std::cout << std::endl;
+    bst_inorder_iterative(tree.root);
+    std::cout << std::endl;
+    std::cout << std::endl << "---------------------" << std::endl;
 }
 
 int main() {

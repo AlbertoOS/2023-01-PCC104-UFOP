@@ -10,4 +10,16 @@ void merge_sort(std::vector<int> &vector);
 
 int binary_search_tree_size(std::shared_ptr<BinarySearchTree::Node> node);
 
+void bst_preorder_iterative(std::shared_ptr<BinarySearchTree::Node> root);
+
+void bst_preorder_recursive(std::shared_ptr<BinarySearchTree::Node> node);
+
+void bst_postorder_iterative(std::shared_ptr<BinarySearchTree::Node> root);
+
+void bst_postorder_recursive(std::shared_ptr<BinarySearchTree::Node> node);
+
+void bst_inorder_iterative(std::shared_ptr<BinarySearchTree::Node> root);
+
+void bst_inorder_recursive(std::shared_ptr<BinarySearchTree::Node> node);
+
 #endif //DIVIDE_AND_CONQUER_H

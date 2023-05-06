@@ -1,3 +1,5 @@
+#include <stack>
+#include <iostream>
 #include "03-divide-and-conquer.h"
 
 int max_element(std::vector<int> vector, int left, int right) {
@@ -74,4 +76,93 @@ int binary_search_tree_size(std::shared_ptr<BinarySearchTree::Node> node) {
         return 0;
     else
         return 1 + binary_search_tree_size(node->left) + binary_search_tree_size(node->right);
+}
+
+void bst_preorder_iterative(std::shared_ptr<BinarySearchTree::Node> root) {
+    if (root == nullptr) {
+        return;
+    }
+
+    std::stack<std::shared_ptr<BinarySearchTree::Node>> preorder_stack;
+    preorder_stack.push(root);
+
+    while (!preorder_stack.empty()) {
+        std::shared_ptr<BinarySearchTree::Node> node = preorder_stack.top();
+        preorder_stack.pop();
+        std::cout << node->value << " ";
+        if (node->right != nullptr) {
+            preorder_stack.push(node->right);
+        }
+        // Insert left node last on stack to explore it first
+        if (node->left != nullptr) {
+            preorder_stack.push(node->left);
+        }
+    }
+}
+
+void bst_preorder_recursive(std::shared_ptr<BinarySearchTree::Node> node) {
+    if (node != nullptr) {
+        std::cout << node->value << " ";
+        bst_preorder_recursive(node->left);
+        bst_preorder_recursive(node->right);
+    }
+}
+
+void bst_postorder_iterative(std::shared_ptr<BinarySearchTree::Node> root) {
+    std::stack<std::shared_ptr<BinarySearchTree::Node>> traverse_stack, postorder_stack;
+    traverse_stack.push(root);
+
+    while (!traverse_stack.empty()) {
+        std::shared_ptr<BinarySearchTree::Node> node = traverse_stack.top();
+        traverse_stack.pop();
+        postorder_stack.push(node);
+
+        if (node->left != nullptr) {
+            traverse_stack.push(node->left);
+        }
+        if (node->right != nullptr) {
+            traverse_stack.push(node->right);
+        }
+    }
+
+    while (!postorder_stack.empty()) {
+        std::shared_ptr<BinarySearchTree::Node> node = postorder_stack.top();
+        postorder_stack.pop();
+        std::cout << node->value << " ";
+    }
+}
+
+
+void bst_postorder_recursive(std::shared_ptr<BinarySearchTree::Node> node) {
+    if (node != nullptr) {
+        bst_postorder_recursive(node->left);
+        bst_postorder_recursive(node->right);
+        std::cout << node->value << " ";
+    }
+}
+
+void bst_inorder_iterative(std::shared_ptr<BinarySearchTree::Node> root) {
+    std::stack<std::shared_ptr<BinarySearchTree::Node>> inorder_stack;
+    std::shared_ptr<BinarySearchTree::Node> node = root;
+
+    while (node != nullptr || !inorder_stack.empty()) {
+        // Traverse tree adding left nodes to stack until a leaf is found
+        while (node != nullptr) {
+            inorder_stack.push(node);
+            node = node->left;
+        }
+
+        node = inorder_stack.top();
+        inorder_stack.pop();
+        std::cout << node->value << " ";
+        node = node->right;
+    }
+}
+
+void bst_inorder_recursive(std::shared_ptr<BinarySearchTree::Node> node) {
+    if (node != nullptr) {
+        bst_inorder_recursive(node->left);
+        std::cout << node->value << " ";
+        bst_inorder_recursive(node->right);
+    }
 }
