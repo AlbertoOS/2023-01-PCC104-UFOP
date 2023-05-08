@@ -2,7 +2,6 @@
 
 Table of Contents:
 
-- [Questões da Lista](#questões-da-lista)
 - [Maior elemento em um arranjo](#maior-elemento-em-um-arranjo)
   - [Maior elemento em um arranjo - Implementação](#maior-elemento-em-um-arranjo---implementação)
   - [Maior elemento em um arranjo - Análise](#maior-elemento-em-um-arranjo---análise)
@@ -24,8 +23,6 @@ Table of Contents:
 - [Binary Search Tree Traversal](#binary-search-tree-traversal)
   - [Binary Search Tree Traversal - Implementação Recursiva](#binary-search-tree-traversal---implementação-recursiva)
   - [Binary Search Tree Traversal - Análise](#binary-search-tree-traversal---análise)
-
-## Questões da Lista
 
 ## Maior elemento em um arranjo
 
