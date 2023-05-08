@@ -71,6 +71,42 @@ void merge_sort(std::vector<int> &vector) {
     }
 }
 
+void quick_sort(std::vector<int> &vector) {
+    std::stack<std::pair<int, int>> stack;
+    stack.push(std::make_pair(0, vector.size() - 1));
+
+    while (!stack.empty()) {
+        // Quick sort state in stack need left and right indexes to work
+        // so it could stack/unstack pairs or stack/unstack single elements twice in a row
+        int left = stack.top().first;
+        int right = stack.top().second;
+        stack.pop();
+
+        // Hoare partition
+        int pivot = vector[(left + right) / 2];
+        int i = left;
+        int j = right;
+
+        while (i <= j) {
+            while (vector[i] < pivot) { i++; } // increases index i until an element not lesser than pivot is found
+            while (vector[j] > pivot) { j--; } // decreases index j until an element not greater than pivot is found
+            if (i <= j) {
+                std::swap(vector[i], vector[j]); // this swap can and will move pivot if necessary
+                i++;
+                j--;
+            }
+        }
+        // If there are elements on the left side of pivot, then push left side to stack
+        if (left < j) {
+            stack.push(std::make_pair(left, j));
+        }
+        // If there are elements on the right side of pivot, then push right side to stack
+        if (i < right) {
+            stack.push(std::make_pair(i, right));
+        }
+    }
+}
+
 int binary_search_tree_size(std::shared_ptr<BinarySearchTree::Node> node) {
     if (node == NULL)
         return 0;

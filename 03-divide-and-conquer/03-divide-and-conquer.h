@@ -8,6 +8,8 @@ int max_element(std::vector<int> vector, int left, int right);
 
 void merge_sort(std::vector<int> &vector);
 
+void quick_sort(std::vector<int> &vector);
+
 int binary_search_tree_size(std::shared_ptr<BinarySearchTree::Node> node);
 
 void bst_preorder_iterative(std::shared_ptr<BinarySearchTree::Node> root);
