@@ -168,7 +168,6 @@ void bst_postorder_iterative(std::shared_ptr<BinarySearchTree::Node> root) {
     }
 }
 
-
 void bst_postorder_recursive(std::shared_ptr<BinarySearchTree::Node> node) {
     if (node != nullptr) {
         bst_postorder_recursive(node->left);
