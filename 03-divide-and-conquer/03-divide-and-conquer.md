@@ -297,6 +297,18 @@ Dessa forma, tem-se um custo quadrático com relação ao tamanho do array, uma 
 >
 > Obs: a mesma entrada já ordenada de forma crescente seria o melhor caso para o algoritmo escolhendo o pivô como o elemento do meio do arranjo de entrada.
 
+Para a implementação em que a escolha do pivô é sempre o elemento do meio do array, o seguinte array ocasionaria no pior caso:
+
+```
+[6 4 2 1 3 5 7], pivot=1
+[] [6 4 2 3 5 7], pivot=2
+[] [6 4 3 5 7], pivot=3
+[] [6 4 5 7], pivot=4
+[] [6 5 7], pivot=5
+[] [6 7], pivot=6
+[] [7], pivot=7
+```
+
 #### Quick Sort - Expressão Matemática
 
 O custo de tempo do melhor caso do quick sort é dada a seguinte expressão matemática:
