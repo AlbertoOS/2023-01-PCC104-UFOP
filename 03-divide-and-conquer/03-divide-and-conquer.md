@@ -214,7 +214,7 @@ Todos os casos do Merge Sort são $\theta (n \log n)$ porém algumas condições
 
 No melhor caso, o arranjo de entrada já está ordenado de forma crescente, de modo que o número de comparações será a metade do tamanho do sub-problema atual, dado pela função de custo:
 
-$$C_b(n) = 2 \cdot C_b\left(\frac{n}{2}\right) + \frac{n}{2}\;\; \forall n > 1$$
+$$C_b(n) = 2 \cdot C_b\left(\frac{n}{2}\right) + \frac{n}{2}\; \forall n > 1$$
 $$C_b(1) = 0$$
 
 Exemplo melhor caso: [1,2,3,4,5,6,7,8]
@@ -222,7 +222,7 @@ Exemplo melhor caso: [1,2,3,4,5,6,7,8]
 \
 [No pior caso](https://www.baeldung.com/cs/merge-sort-time-complexity#the-worst-case-of-time-complexity-for-merge-sort), o número de comparações é o maior possível quando os sub-arrays que devem realizar merge possuem elementos alternados, por exemplo o merge do array [1,3,5,7] com [2,4,6,8], com o que é possível calcular a entrada que resultaria nesse último merge. Dado pela função de custo:
 
-$$C_b(n) = 2 \cdot C_b\left(\frac{n}{2}\right) + n\;\; \forall n > 1$$
+$$C_b(n) = 2 \cdot C_b\left(\frac{n}{2}\right) + n\; \forall n > 1$$
 $$C_b(1) = 0$$
 
 Exemplo pior caso: [5,1,7,3,6,2,8,4]
