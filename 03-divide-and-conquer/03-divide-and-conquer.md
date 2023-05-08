@@ -67,12 +67,12 @@ int max_element(std::vector<int> vector, int left, int right) {
 
     Considerando a operação básica como a comparação entre elementos definida pela linha de código `if (vector[left_max] >= vector[right_max])`:
 
-    $$
-    \begin{aligned}
-    C(n) & = C(\lceil {n \over 2} \rceil) + C(\lfloor {n \over 2} \rfloor) + 1 \; \forall n > 1 \\
-    C(1) & = 0 \\
-    \end{aligned}
-    $$
+$$
+\begin{aligned}
+C(n) & = C(\lceil {n \over 2} \rceil) + C(\lfloor {n \over 2} \rfloor) + 1 \; \forall n > 1 \\
+C(1) & = 0 \\
+\end{aligned}
+$$
 
 #### Maior elemento em um arranjo - Cálculo da função de custo
 
