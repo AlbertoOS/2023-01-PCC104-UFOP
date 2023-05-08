@@ -173,18 +173,21 @@ Essa característica advém da implementação pela linha de código `if (left_v
 #### Merge Sort - Expressão Matemática
 
 A análise de complexidade de tempo deste algoritmo é dada pela seguinte expressão matemática:
+
 $$
 \begin{aligned}
 C(n) & = 2 \cdot C \left(\frac{n}{2}\right) + n - 1 \; \forall n > 1 \\
 C(1) & = 0 \\
 \end{aligned}
 $$
+
 Tal que $C(1)$ representa o caso base e $C(n)$ representa o custo para se realizar a busca em uma entrada de tamanho
 $n$, de modo que a cada iteração, a entrada é divida por $2$ e é feita uma operação básica de comparação.
 
 #### Merge Sort - Cálculo da função de custo
 
 Considerando $n = 2^k$ a fim de facilitar o cálculo e dado que essa substituição ainda mantém a expressão verdadeira.
+
 $$
 \begin{aligned}
 C(2^k) & = C(2^{k-1}) + 1 \\
@@ -196,7 +199,9 @@ C(2^k) & = C(2^{k-1}) + 1 \\
 C(2^k) & = k + 1 \\
 \end{aligned}
 $$
+
 Com a relação de recorrência resolvida, é feita a substituição de $k = \log_2 n$ e tem-se que:
+
 $$
 \begin{aligned}
 C(n) & = \log_2 n + 1 \\
@@ -307,6 +312,7 @@ C_b(1) & = 0 \\
 $$
 
 A análise de complexidade de tempo deste algoritmo para o pior caso é dada pela seguinte expressão matemática:
+
 $$
 \begin{aligned}
 C_w(n) & = C_w(n - 1) + n \; \forall n > 1 \\
