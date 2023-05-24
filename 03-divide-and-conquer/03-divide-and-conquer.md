@@ -23,6 +23,7 @@ Table of Contents:
 - [Binary Search Tree Traversal](#binary-search-tree-traversal)
   - [Binary Search Tree Traversal - Implementação Recursiva](#binary-search-tree-traversal---implementação-recursiva)
   - [Binary Search Tree Traversal - Análise](#binary-search-tree-traversal---análise)
+  - [Binary Search Tree Traversal - Cálculo da função de custo](#binary-search-tree-traversal---cálculo-da-função-de-custo)
 
 ## Maior elemento em um arranjo
 
@@ -96,6 +97,8 @@ $$
 C(n) & = n - 1 \\
 \end{aligned}
 $$
+
+Portanto, $\Theta(n)$.
 
 ## Merge Sort
 
@@ -283,11 +286,17 @@ Essa característica advém da forma como as trocas são feitos entre elementos 
 
 Para o melhor caso do algoritmo, a escolha do pivô deve resultar na divisão de duas partições de tamanhos iguais ou com 1 elemento de diferença. Fazendo com que a cada iteração o problema seja dividido pela metade.
 
+```
+[1 2 3 4 5 6 7], pivot=4
+[1 2 3] [5 6 7], pivot=2 & pivot=6
+[1] [3] [5] [7]
+```
+
 #### Quick Sort - Pior Caso
 
 O pior caso do algoritmo ocorre com a sucessiva escolha de pivôs ruins que gere uma árvore de chamadas degenerada pois a cada interação reduz o problema em 1 elemento ao invés de dividir o problema pela metade.
 
-No algoritmo com esquema de partição de Lomuro e escolhendo o pivô como o último elemento, o pior caso seria uma entrada já ordenada de forma crescente ou decrescente.
+No algoritmo com esquema de partição de Lomuto e escolhendo o pivô como o último elemento, o pior caso seria uma entrada já ordenada de forma crescente ou decrescente.
 
 Para diminuir a frequência desse tipo de pior caso é possível implementar melhorias no algoritmo, [por exemplo seja pela escolha de um pivô aleatório ou selecionando o pivô como a média de três outros elementos (início, meio e fim do arranjo)](https://www.baeldung.com/cs/quicksort-time-complexity-worst-case#advantages-and-disadvantages).
 
@@ -420,3 +429,18 @@ void bst_inorder_recursive(std::shared_ptr<BinarySearchTree::Node> node) {
 ### Binary Search Tree Traversal - Análise
 
 Tanto para o algoritmo de calcular o tamanho da árvore binária `binary_search_tree_size`, quanto para o caminhamento (independente da ordem em que os nós são impressos) é necessário percorrer todos os nodes, portanto seu custo de tempo é relativo ao tamanho da árvore, sendo $\theta (n)$.
+
+$$
+\begin{aligned}
+C(n) & = 2 \cdot C \left(\frac{n}{2}\right) + 1 \; \forall n > 1 \\
+C(1) & = 0 \\
+\end{aligned}
+$$
+
+### Binary Search Tree Traversal - Cálculo da função de custo
+
+$$
+\begin{aligned}
+C(2^k) & = 2 \cdot C(2^{k-1}) + 1 \\
+\end{aligned}
+$$
