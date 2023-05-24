@@ -1,5 +1,6 @@
 #include <vector>
 #include <random>
+#include <chrono>
 #include "utils.h"
 
 void list01_exhaustive_search() {
@@ -145,9 +146,31 @@ void list03_divide_and_conquer() {
     std::cout << std::endl << "---------------------" << std::endl;
 }
 
+void list04_dynamic_programming() {
+    int random_element = generate_random_integer(4, 93);
+    // 47th overflows int
+    // 93th overflows long long [int]
+    // 94th overflows unsigned long long [int]
+    std::cout << std::endl << "Calculating " << random_element << "th fibonacci number:" << std::endl;
+    auto t1 = std::chrono::high_resolution_clock::now();
+    unsigned long long result = fibonacci(random_element);
+    auto t2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> ms_double = t2 - t1;
+    std::cout << result << " in " << ms_double.count() << "ms" << std::endl;
+
+    std::cout << std::endl << "Calculating " << random_element << "th fibonacci number dynamically:" << std::endl;
+    t1 = std::chrono::high_resolution_clock::now();
+    result = dynamic_fibonacci(random_element);
+    t2 = std::chrono::high_resolution_clock::now();
+    ms_double = t2 - t1;
+    std::cout << result << " in " << ms_double.count() << "ms" << std::endl;
+
+}
+
 int main() {
     //list01_exhaustive_search();
     //list02_decrease_and_conquer();
-    list03_divide_and_conquer();
+    //list03_divide_and_conquer();
+    list04_dynamic_programming();
     return 0;
 }

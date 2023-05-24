@@ -8,6 +8,7 @@
 #include "01-exhaustive-search/01-exhaustive-search.h"
 #include "02-decrease-and-conquer/02-decrease-and-conquer.h"
 #include "03-divide-and-conquer/03-divide-and-conquer.h"
+#include "04-dynamic-programming/04-dynamic-programming.h"
 
 const auto print_container = [](const auto &container, bool print_index = true) {
     std::cout << "[ ";
