@@ -173,6 +173,15 @@ void list04_dynamic_programming() {
     std::cout << std::endl << "with matrix exponentiation:" << std::endl;
     call_timed_fibonacci(&fibonacci_matrix, random_element);
 
+    std::cout << std::endl << std::endl;
+    int random_amount = generate_random_integer(1, 50);
+    std::vector<int> coins{1, 2, 5, 10, 25, 50};
+    std::vector<int> change;
+    int coin_count = change_making(coins, random_amount, change);
+    std::cout << std::endl << "Calculating change of value " << random_amount << " with coins: ";
+    print_container(coins, false);
+    std::cout << std::endl << "The minimum amount of coins is " << coin_count << " and the coins are: " << std::endl;
+    print_container(change, false);
 }
 
 int main() {

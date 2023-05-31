@@ -1,4 +1,4 @@
-#include <vector>
+#include <climits>
 # include "04-dynamic-programming.h"
 # include "../utils.h"
 
@@ -68,3 +68,31 @@ unsigned long long int fibonacci_matrix(int n) {
     return F[0][0];
 }
 
+int change_making(const std::vector<int> &coins, int amount, std::vector<int> &change) {
+    std::vector<int> min_coins(amount + 1, 0);
+    min_coins[0] = 0;
+    std::vector<int> last_coin_used(amount + 1, -1); // for solution backtracking
+
+    for (int i = 1; i <= amount; i++) {
+        min_coins[i] = INT_MAX;
+        for (int j = 0; j < coins.size(); j++) {
+            if (coins[j] <= i) {
+                int min_coin = min_coins[i - coins[j]];
+                if (min_coin != INT_MAX && min_coin + 1 < min_coins[i]) {
+                    min_coins[i] = min_coin + 1;
+                    last_coin_used[i] = j;
+                }
+            }
+        }
+        print_container(min_coins, false);
+    }
+
+    int remaining_amount = amount;
+    while (remaining_amount > 0) {
+        int coin_index = last_coin_used[remaining_amount];
+        change.push_back(coins[coin_index]);
+        remaining_amount -= coins[coin_index];
+    }
+
+    return min_coins[amount];
+}
