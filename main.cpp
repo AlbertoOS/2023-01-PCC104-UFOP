@@ -146,24 +146,32 @@ void list03_divide_and_conquer() {
     std::cout << std::endl << "---------------------" << std::endl;
 }
 
+void call_timed_fibonacci(unsigned long long (*fib)(int), int number) {
+    auto t1 = std::chrono::high_resolution_clock::now();
+    unsigned long long result = fib(number);
+    auto t2 = std::chrono::high_resolution_clock::now();
+    std::chrono::duration<double, std::milli> ms_double = t2 - t1;
+    std::cout << result << " in " << ms_double.count() << "ms" << std::endl;
+}
+
 void list04_dynamic_programming() {
-    int random_element = generate_random_integer(4, 93);
+    int random_element = generate_random_integer(93, 93);
+    //int random_element = generate_random_integer(4, 93);
     // 47th overflows int
     // 93th overflows long long [int]
     // 94th overflows unsigned long long [int]
     std::cout << std::endl << "Calculating " << random_element << "th fibonacci number:" << std::endl;
-    auto t1 = std::chrono::high_resolution_clock::now();
-    unsigned long long result = fibonacci(random_element);
-    auto t2 = std::chrono::high_resolution_clock::now();
-    std::chrono::duration<double, std::milli> ms_double = t2 - t1;
-    std::cout << result << " in " << ms_double.count() << "ms" << std::endl;
+    //std::cout << std::endl << "recursively:" << std::endl;
+    //call_timed_fibonacci(&fibonacci, random_element);
 
-    std::cout << std::endl << "Calculating " << random_element << "th fibonacci number dynamically:" << std::endl;
-    t1 = std::chrono::high_resolution_clock::now();
-    result = dynamic_fibonacci(random_element);
-    t2 = std::chrono::high_resolution_clock::now();
-    ms_double = t2 - t1;
-    std::cout << result << " in " << ms_double.count() << "ms" << std::endl;
+    std::cout << std::endl << "dynamically with two extra variables:" << std::endl;
+    call_timed_fibonacci(&dynamic_var_fibonacci, random_element);
+
+    std::cout << std::endl << "dynamically with vector:" << std::endl;
+    call_timed_fibonacci(&dynamic_vector_fibonacci, random_element);
+
+    std::cout << std::endl << "with matrix exponentiation:" << std::endl;
+    call_timed_fibonacci(&fibonacci_matrix, random_element);
 
 }
 
