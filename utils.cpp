@@ -1,5 +1,18 @@
 #include "utils.h"
 
+std::ostream &operator<<(std::ostream &stream, std::pair<int, int> &pair) {
+    stream << "(" << pair.first << ", " << pair.second << ")";
+    return stream;
+}
+
+const int log10(const std::pair<int, int> &pair) {
+    return (int) std::log10(pair.first) + std::log10(pair.second) + 3;
+}
+
+const int log10(const std::string &ah) {
+    return 1;
+}
+
 static std::random_device random_device;
 static std::mt19937 mersenne_engine{random_device()};
 

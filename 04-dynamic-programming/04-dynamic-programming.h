@@ -13,4 +13,10 @@ unsigned long long int fibonacci_matrix(int n);
 
 int change_making(const std::vector<int> &coins, int amount, std::vector<int> &change);
 
+int dynamic_coin_collecting(const std::vector<std::vector<int>> &board, std::vector<std::pair<int, int>> &path);
+
+int coin_collecting(const std::vector<std::vector<int>> &board, std::vector<std::pair<int, int>> &path);
+
+int coin_collecting(const std::vector<std::vector<int>> &board, int i, int j, std::vector<std::pair<int, int>> &path);
+
 #endif //DYNAMIC_PROGRAMMING_H

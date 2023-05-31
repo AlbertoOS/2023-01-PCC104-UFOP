@@ -1,5 +1,4 @@
 #include <vector>
-#include <random>
 #include <chrono>
 #include "utils.h"
 
@@ -182,6 +181,41 @@ void list04_dynamic_programming() {
     print_container(coins, false);
     std::cout << std::endl << "The minimum amount of coins is " << coin_count << " and the coins are: " << std::endl;
     print_container(change, false);
+
+    std::cout << std::endl << std::endl;
+    int board_rows = generate_random_integer(3, 10);
+    int board_cols = generate_random_integer(3, 10);
+    std::cout << "Board with size " << board_rows << "x" << board_cols << " for coin collecting problem: " << std::endl;
+    std::vector<std::vector<int>> board(board_rows);
+    std::vector<std::pair<int, int>> path;
+    std::vector<std::pair<int, int>> recursive_path;
+    for (int i = 0; i < board_rows; ++i) {
+        board[i] = generate_random_vector(board_cols, 0, 1);
+        print_container(board[i], false);
+    }
+    int coin_recursive_amount = coin_collecting(board, recursive_path);
+    int coin_amount = dynamic_coin_collecting(board, path);
+    std::cout << std::endl << "The maximum amount of coins collected recursively is " << coin_recursive_amount
+              << std::endl;
+    std::cout << std::endl << "The maximum amount of coins collected is " << coin_amount << " and the path is: "
+              << std::endl;
+    print_container(path, false);
+    std::vector<std::vector<std::string>> board_path(board_rows, std::vector<std::string>(board_cols, " "));
+    for (auto element: path) {
+        board_path[element.first][element.second] = "-";
+        if (board[element.first][element.second] == 1)
+            board_path[element.first][element.second] = "+";
+    }
+    board_path[0][0] = "o";
+    if (board[0][0] == 1)
+        board_path[0][0] = "O";
+    board_path[board_rows - 1][board_cols - 1] = "x";
+    if (board[board_rows - 1][board_cols - 1] == 1)
+        board_path[board_rows - 1][board_cols - 1] = "X";
+    std::cout << std::endl << "Board solution: " << std::endl;
+    for (int i = 0; i < board_rows; ++i) {
+        print_container(board_path[i], false);
+    }
 }
 
 int main() {

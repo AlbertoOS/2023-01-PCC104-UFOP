@@ -10,9 +10,15 @@
 #include "03-divide-and-conquer/03-divide-and-conquer.h"
 #include "04-dynamic-programming/04-dynamic-programming.h"
 
+std::ostream &operator<<(std::ostream &stream, std::pair<int, int> &pair);
+
+const int log10(const std::pair<int, int> &pair);
+
+const int log10(const std::string &ah);
+
 const auto print_container = [](const auto &container, bool print_index = true) {
     std::cout << "[ ";
-    for (int element: container) {
+    for (auto element: container) {
         std::cout << element << " ";
     }
     std::cout << "]" << std::endl;
@@ -20,7 +26,7 @@ const auto print_container = [](const auto &container, bool print_index = true) 
     if (print_index) {
         std::cout << "i ";
         int i = 0;
-        for (int element: container) {
+        for (auto element: container) {
             std::cout << std::setfill(' ') << std::setw(log10(element) + 1) << i << " ";
             ++i;
         }
