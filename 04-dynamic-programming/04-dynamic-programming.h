@@ -19,4 +19,10 @@ int coin_collecting(const std::vector<std::vector<int>> &board, std::vector<std:
 
 int coin_collecting(const std::vector<std::vector<int>> &board, int i, int j, std::vector<std::vector<int>> &max_coins);
 
+int knapsack(int item_count, int capacity, const std::vector<std::pair<int, int>> &items,
+             std::vector<std::vector<int>> &memory);
+
+std::vector<bool> knapsack_solution(int item_count, int capacity, const std::vector<std::pair<int, int>> &items,
+                                    std::vector<std::vector<int>> &memory);
+
 #endif //DYNAMIC_PROGRAMMING_H

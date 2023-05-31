@@ -171,18 +171,20 @@ void list04_dynamic_programming() {
 
     std::cout << std::endl << "with matrix exponentiation:" << std::endl;
     call_timed_fibonacci(&fibonacci_matrix, random_element);
+    std::cout << std::endl << "---------------------" << std::endl;
 
-    std::cout << std::endl << std::endl;
     int random_amount = generate_random_integer(1, 50);
     std::vector<int> coins{1, 2, 5, 10, 25, 50};
     std::vector<int> change;
+    std::cout << std::endl << "---Change making problem ~debug~---" << std::endl;
     int coin_count = change_making(coins, random_amount, change);
     std::cout << std::endl << "Calculating change of value " << random_amount << " with coins: ";
     print_container(coins, false);
     std::cout << std::endl << "The minimum amount of coins is " << coin_count << " and the coins are: " << std::endl;
     print_container(change, false);
+    std::cout << std::endl << "---------------------" << std::endl;
 
-    std::cout << std::endl << std::endl;
+    std::cout << std::endl << "---Coin collecting problem---" << std::endl << std::endl;
     int board_rows = generate_random_integer(3, 10);
     int board_cols = generate_random_integer(3, 10);
     std::cout << "Board with size " << board_rows << "x" << board_cols << " for coin collecting problem: " << std::endl;
@@ -217,6 +219,37 @@ void list04_dynamic_programming() {
     for (int i = 0; i < board_rows; ++i) {
         print_container(board_path[i], false);
     }
+    std::cout << std::endl << "---------------------" << std::endl;
+
+    int num_items = generate_random_integer(4, 10);
+    std::vector<int> weights = generate_random_vector(num_items, 1, 10);
+    std::vector<int> values = generate_random_vector(num_items, 5, 25);
+    int capacity = generate_random_integer(5, 30);
+    std::vector<std::pair<int, int>> items;
+    for (int i = 0; i < num_items; i++) {
+        items.push_back({weights[i], values[i]});
+    }
+//    items = {{2, 12},
+//             {1, 10},
+//             {3, 20},
+//             {2, 15}};
+//    capacity = 5;
+
+    std::cout << "Knapsack problem with capacity " << capacity << " and items: " << std::endl;
+    print_container(items, true);
+    std::vector<std::vector<int>> memory(items.size() + 1, std::vector<int>(capacity + 1, -1));
+    std::cout << std::endl << "The maximum value is " << knapsack(items.size(), capacity, items, memory);
+    std::vector<bool> solution = knapsack_solution(items.size(), capacity, items, memory);
+    std::cout << std::endl << "Solution: " << std::endl;
+    print_container(solution, true);
+    int solution_weight = 0;
+    for (int i = 0; i < items.size(); i++) {
+        if (solution[i])
+            solution_weight += items[i].first;
+    }
+    std::cout << "with total weight " << solution_weight << " and "
+              << std::count(solution.begin(), solution.end(), true) << " items" << std::endl;
+    std::cout << std::endl << "---------------------" << std::endl;
 }
 
 int main() {

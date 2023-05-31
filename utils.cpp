@@ -6,7 +6,7 @@ std::ostream &operator<<(std::ostream &stream, std::pair<int, int> &pair) {
 }
 
 const int log10(const std::pair<int, int> &pair) {
-    return (int) std::log10(pair.first) + std::log10(pair.second) + 3;
+    return (int) std::log10(pair.first) + std::log10(pair.second) + 4;
 }
 
 const int log10(const std::string &ah) {

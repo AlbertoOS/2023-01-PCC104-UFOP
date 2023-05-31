@@ -165,3 +165,54 @@ coin_collecting(const std::vector<std::vector<int>> &board, int i, int j, std::v
 
     return max_coin;
 }
+
+int knapsack(int item_count, int capacity, const std::vector<std::pair<int, int>> &items,
+             std::vector<std::vector<int>> &memory) {
+
+    if (memory[item_count][capacity] != -1)
+        return memory[item_count][capacity];
+    if (item_count == 0 || capacity == 0)
+        return 0;
+
+    if (items[item_count - 1].first > capacity) {
+        // item's weight is heavier than capacity, cannot fit
+        //knapsack_solution[item_count - 1] = false;
+        memory[item_count][capacity] = knapsack(item_count - 1, capacity, items, memory);
+    } else {
+        // item's weight is lighter than capacity, will fit
+        int value_included = items[item_count - 1].second +
+                             knapsack(item_count - 1, capacity - items[item_count - 1].first, items, memory);
+        int value_excluded = knapsack(item_count - 1, capacity, items, memory);
+
+        if (value_included > value_excluded) {
+            //knapsack_solution[item_count - 1] = true;
+            memory[item_count][capacity] = value_included;
+        } else {
+            //knapsack_solution[item_count - 1] = false;
+            memory[item_count][capacity] = value_excluded;
+        }
+//        memory[item_count][capacity] = std::max(
+//                items[item_count - 1].second +
+//                knapsack(item_count - 1, capacity - items[item_count - 1].first, items, memory, knapsack_solution),
+//                knapsack(item_count - 1, capacity, items, memory, knapsack_solution));
+    }
+
+    return memory[item_count][capacity];
+}
+
+std::vector<bool> knapsack_solution(int item_count, int capacity, const std::vector<std::pair<int, int>> &items,
+                                    std::vector<std::vector<int>> &memory) {
+    std::vector<bool> solution(items.size(), false);
+    int result = memory[item_count][capacity];
+    int weight = capacity;
+    for (int i = item_count; i > 0 && result > 0; i--) {
+        if (result == memory[i - 1][weight])
+            continue; // this means result is same without item (i-1), so it is not included
+        else {
+            solution[i - 1] = true;
+            result = result - items[i - 1].second;
+            weight = weight - items[i - 1].first;
+        }
+    }
+    return solution;
+}
