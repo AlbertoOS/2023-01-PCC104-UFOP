@@ -196,7 +196,8 @@ void list04_dynamic_programming() {
     int coin_recursive_amount = coin_collecting(board, recursive_path);
     int coin_amount = dynamic_coin_collecting(board, path);
     std::cout << std::endl << "The maximum amount of coins collected recursively is " << coin_recursive_amount
-              << std::endl;
+              << " and the path is: " << std::endl;
+    print_container(recursive_path, false);
     std::cout << std::endl << "The maximum amount of coins collected is " << coin_amount << " and the path is: "
               << std::endl;
     print_container(path, false);

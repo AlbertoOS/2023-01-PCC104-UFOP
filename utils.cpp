@@ -1,7 +1,7 @@
 #include "utils.h"
 
 std::ostream &operator<<(std::ostream &stream, std::pair<int, int> &pair) {
-    stream << "(" << pair.first << ", " << pair.second << ")";
+    stream << "(" << pair.first << "," << pair.second << ")";
     return stream;
 }
 

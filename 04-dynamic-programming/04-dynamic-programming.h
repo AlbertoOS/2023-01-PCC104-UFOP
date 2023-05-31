@@ -17,6 +17,6 @@ int dynamic_coin_collecting(const std::vector<std::vector<int>> &board, std::vec
 
 int coin_collecting(const std::vector<std::vector<int>> &board, std::vector<std::pair<int, int>> &path);
 
-int coin_collecting(const std::vector<std::vector<int>> &board, int i, int j, std::vector<std::pair<int, int>> &path);
+int coin_collecting(const std::vector<std::vector<int>> &board, int i, int j, std::vector<std::vector<int>> &max_coins);
 
 #endif //DYNAMIC_PROGRAMMING_H

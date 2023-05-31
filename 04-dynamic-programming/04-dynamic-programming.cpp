@@ -97,6 +97,29 @@ int change_making(const std::vector<int> &coins, int amount, std::vector<int> &c
     return min_coins[amount];
 }
 
+std::vector<std::pair<int, int>> coin_collecting_backtrack(const std::vector<std::vector<int>> &max_coins) {
+    std::vector<std::pair<int, int>> path;
+    // Backtrack to find the solution path
+    int i = max_coins.size() - 1, j = max_coins[0].size() - 1;
+    while (i > 0 || j > 0) {
+        path.push_back({i, j});
+        if (i == 0) {
+            j--; // if first row, only left movement possible
+        } else if (j == 0) {
+            i--; // if first column, only up movement possible
+        } else {
+            if (max_coins[i - 1][j] > max_coins[i][j - 1]) {
+                i--; // if up movement is better, move up
+            } else {
+                j--; // if left movement is better, move left
+            }
+        }
+    }
+    path.push_back({0, 0});
+    std::reverse(path.begin(), path.end());
+    return path;
+}
+
 int dynamic_coin_collecting(const std::vector<std::vector<int>> &board, std::vector<std::pair<int, int>> &path) {
     int n = board.size();
     int m = board[0].size();
@@ -114,55 +137,31 @@ int dynamic_coin_collecting(const std::vector<std::vector<int>> &board, std::vec
             max_coins[i][j] = board[i][j] + std::max(max_coins[i - 1][j], max_coins[i][j - 1]);
         }
     }
-
-    // Backtrack to find the solution path
-    int i = n - 1, j = m - 1;
-    while (i > 0 || j > 0) {
-        path.push_back({i, j});
-        if (i == 0) {
-            j--; // if first row, only left movement possible
-        } else if (j == 0) {
-            i--; // if first column, only up movement possible
-        } else {
-            if (max_coins[i - 1][j] > max_coins[i][j - 1]) {
-                i--; // if up movement is better, move up
-            } else {
-                j--; // if left movement is better, move left
-            }
-        }
-    }
-    path.push_back({0, 0});
-    std::reverse(path.begin(), path.end());
-
+    path = coin_collecting_backtrack(max_coins);
     return max_coins[n - 1][m - 1];
 }
 
 int coin_collecting(const std::vector<std::vector<int>> &board, std::vector<std::pair<int, int>> &path) {
     int n = board.size();
     int m = board[0].size();
-    int result = coin_collecting(board, n - 1, m - 1, path);
-    //std::reverse(path.begin(), path.end());
+    std::vector<std::vector<int>> max_coins(n, std::vector<int>(m, 0));
+    max_coins[0][0] = board[0][0];
+    int result = coin_collecting(board, n - 1, m - 1, max_coins);
+    path = coin_collecting_backtrack(max_coins);
     return result;
 }
 
-// TODO: get path from an max coin matrix, better than a path variable flinging around
-int coin_collecting(const std::vector<std::vector<int>> &board, int i, int j, std::vector<std::pair<int, int>> &path) {
+int
+coin_collecting(const std::vector<std::vector<int>> &board, int i, int j, std::vector<std::vector<int>> &max_coins) {
     if (i < 0 || j < 0) {
         return 0;
     } else if (i == 0 && j == 0) {
-        //path.push_back({0, 0});
         return board[i][j];
     }
 
     int max_coin = board[i][j] + std::max(
-            coin_collecting(board, i - 1, j, path), coin_collecting(board, i, j - 1, path));
-
-    ////if (max_coin == board[i][j] + coin_collecting(board, i - 1, j, path)) {
-//    if (coin_collecting(board, i - 1, j, path) > coin_collecting(board, i, j - 1, path)) {
-//        path.push_back({i - 1, j}); // left -> right
-//    } else {
-//        path.push_back({i, j - 1}); // up -> down
-//    }
+            coin_collecting(board, i - 1, j, max_coins), coin_collecting(board, i, j - 1, max_coins));
+    max_coins[i][j] = max_coin;
 
     return max_coin;
 }
