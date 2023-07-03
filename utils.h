@@ -9,6 +9,7 @@
 #include "02-decrease-and-conquer/02-decrease-and-conquer.h"
 #include "03-divide-and-conquer/03-divide-and-conquer.h"
 #include "04-dynamic-programming/04-dynamic-programming.h"
+#include "06-backtracking-algorithms/06-backtracking-algorithms.h"
 
 std::ostream &operator<<(std::ostream &stream, std::pair<int, int> &pair);
 
@@ -55,5 +56,7 @@ void print_graph(Graph graph);
 void print_binary_search_tree(std::shared_ptr<BinarySearchTree::Node> node, int space);
 
 void print_binary_search_tree(std::shared_ptr<BinarySearchTree::Node> node);
+
+void print_sudoku_board(int sudoku_board[sudoku_size][sudoku_size]);
 
 #endif //PCC104_UFOP_UTILS_H

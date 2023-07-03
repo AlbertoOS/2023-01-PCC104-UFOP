@@ -222,7 +222,7 @@ void list04_dynamic_programming() {
     std::cout << std::endl << "---------------------" << std::endl;
 
     int num_items = generate_random_integer(4, 10);
-    std::vector<int> weights = generate_random_vector(num_items, 1, 10);
+    std::vector<int> weights = generate_random_vector(num_items, 2, 10);
     std::vector<int> values = generate_random_vector(num_items, 5, 25);
     int capacity = generate_random_integer(5, 30);
     std::vector<std::pair<int, int>> items;
@@ -249,6 +249,28 @@ void list04_dynamic_programming() {
     }
     std::cout << "with total weight " << solution_weight << " and "
               << std::count(solution.begin(), solution.end(), true) << " items" << std::endl;
+
+//    std::cout << std::endl << "Knapsack memory values: " << std::endl;
+//    for (int i = 0; i < memory.size(); ++i) {
+//        print_container(memory[i], false);
+//    }
+    std::cout << std::endl << "---------------------" << std::endl;
+}
+
+void list06_backtracking_algorithms() {
+    int sudoku_board[sudoku_size][sudoku_size] = {{5, 3, 0, 0, 7, 0, 0, 0, 0},
+                                                  {6, 0, 0, 1, 9, 5, 0, 0, 0},
+                                                  {0, 9, 8, 0, 0, 0, 0, 6, 0},
+                                                  {8, 0, 0, 0, 6, 0, 0, 0, 3},
+                                                  {4, 0, 0, 8, 0, 3, 0, 0, 1},
+                                                  {7, 0, 0, 0, 2, 0, 0, 0, 6},
+                                                  {0, 6, 0, 0, 0, 0, 2, 8, 0},
+                                                  {0, 0, 0, 4, 1, 9, 0, 0, 5},
+                                                  {0, 0, 0, 0, 8, 0, 0, 7, 9}};
+    std::cout << std::endl << "Solving the following Sudoku board using Backtracking: " << std::endl;
+    print_sudoku_board(sudoku_board);
+    solve_sudoku(sudoku_board);
+    print_sudoku_board(sudoku_board);
     std::cout << std::endl << "---------------------" << std::endl;
 }
 
@@ -256,6 +278,7 @@ int main() {
     //list01_exhaustive_search();
     //list02_decrease_and_conquer();
     //list03_divide_and_conquer();
-    list04_dynamic_programming();
+    //list04_dynamic_programming();
+    list06_backtracking_algorithms();
     return 0;
 }

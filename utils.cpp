@@ -67,3 +67,28 @@ void print_binary_search_tree(std::shared_ptr<BinarySearchTree::Node> node) {
     print_binary_search_tree(node, 0);
     std::cout << "---End Binary Search Tree---" << std::endl;
 }
+
+void print_sudoku_board(int sudoku_board[sudoku_size][sudoku_size]) {
+    std::cout << "╔═══╤═══╤═══╦═══╤═══╤═══╦═══╤═══╤═══╗" << std::endl;
+    for (int row = 0; row < sudoku_size; row++) {
+        for (int col = 0; col < sudoku_size; col++) {
+            if (col == 0) {
+                std::cout << "║ ";
+            }
+            std::cout << sudoku_board[row][col] << " ";
+            if ((col + 1) % 3 == 0 && col != sudoku_size - 1 || col == sudoku_size - 1) {
+                std::cout << "║ ";
+            } else {
+                //std::cout << "│ ";
+                std::cout << "  ";
+            }
+        }
+        std::cout << std::endl;
+        if ((row + 1) % 3 == 0 && row != sudoku_size - 1) {
+            std::cout << "╠═══╪═══╪═══╬═══╪═══╪═══╬═══╪═══╪═══╣" << std::endl;
+        } else if (row != sudoku_size - 1) {
+            //std::cout << "╟───┼───┼───╫───┼───┼───╫───┼───┼───╢" << std::endl;
+        }
+    }
+    std::cout << "╚═══╧═══╧═══╩═══╧═══╧═══╩═══╧═══╧═══╝" << std::endl;
+}
